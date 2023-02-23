@@ -22,8 +22,9 @@ wk.register({
   		      initial_mode = "normal",
 		        layout_config = { height = 40 }
 	        })
-        end, '[O]pen [F]ile Browser'}
-    },
+        end, '[O]pen [F]ile Browser'},
+    t = {'<cmd>terminal fish<cr>', '[O]pen [T]erminal'},
+  },
   q = {'<cmd>q!<cr>', '[Q]uit'},
   r = {
     n = {'<cmd>Lspsaga rename<cr>', '[R]e[n]ame'}
@@ -36,7 +37,7 @@ wk.register({
     p = {require('telescope.builtin').grep_string, '[S]earch [P]hrase'},
     o = {'<cmd>so<cr>', ':so'}
   },
-  t = {'<cmd>ToggleTerm<cr>', { silent = true}},
+  -- t = {'<cmd>ToggleTerm<cr>', { silent = true}},
   w = {'<cmd>w<cr>', ':[w]'},
 }, { prefix = "<leader>" })
 
@@ -56,7 +57,6 @@ wk.register({
     d = {'<cmd>tabclose<CR>', '[T]ab [D]elete', {silent = true}},
     l = {'<cmd>BufferLineCyclePrev<CR>', 'Go Prev [T]ab'},
     h = {'<cmd>BufferLineCycleNext<CR>', 'Go Next [T]ab'},
-    t = {'<cmd>terminal fish<CR>', { silent = true }},
   },
   J = {'<C-d><C-d>', 'Go Prev Page'},
   K = {'<C-u><C-u>', 'Go Next Page'},
