@@ -43,9 +43,19 @@ telescope.setup {
           end
         },
       },
+      path = "%:p:h",
+      cwd = vim.fn.expand('%:p:h'),
+		  respect_gitignore = false,
+		  hidden = true,
+	    grouped = true,
+  	  initial_mode = "normal",
+		  layout_config = { height = 40 }
     },
   },
 }
+
+-- It shoud be after telescope.setup()
+pcall(telescope.load_extension, 'file_browser')
 
 -- Enable telescope fzf native, if installed
 pcall(telescope.load_extension, 'fzf')
