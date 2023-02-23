@@ -34,6 +34,14 @@ require('lazy').setup({
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
 
+      -- prettier
+      { 'MunifTanjim/prettier.nvim', 
+        dependencies = {
+          -- make non-lsp systems work with LSP
+          'jose-elias-alvarez/null-ls.nvim',
+        }
+      },
+
       -- LSP UI
       {
         'glepnir/lspsaga.nvim',
@@ -59,21 +67,17 @@ require('lazy').setup({
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
 
-  { -- Theme
-    'catppuccin/nvim',
-    -- priority = 1000,
-    name = 'catppuccin',
-  },
-
-  { -- Theme which gives me solarized dark colorscheme
-    'svrana/neosolarized.nvim',
-    priority = 1000,
-    dependencies = {'tjdevries/colorbuddy.vim'},
-  },
+  -- Theme
+  { 'EdenEast/nightfox.nvim', },
 
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
+  },
+
+  { -- Tab
+    'akinsho/bufferline.nvim',
+    dependencies = {'nvim-tree/nvim-web-devicons'}
   },
 
   -- Fuzzy Finder (files, lsp, etc)
@@ -101,4 +105,29 @@ require('lazy').setup({
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
   },
+  -- adds indentation guides to all lines (including empty lines)
+  { "lukas-reineke/indent-blankline.nvim" },
+
+  { -- EasyMotion
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+  },
+
+  -- GitHub Copilot
+  -- It needs tab key is not mapped by other plugins
+  { 'github/copilot.vim' },
+
+  -- Display a number of serach results
+  { 'kevinhwang91/nvim-hlslens' },
+
+  -- Awesome autopair plugin
+  { 'windwp/nvim-autopairs' },
+  -- Also autopair for html tags
+  { 'windwp/nvim-ts-autotag' },
+
+  -- Adds git releated signs to the gutter, as well as utilities for managing changes
+  { 'lewis6991/gitsigns.nvim' },
+
+  -- Discord Rich Presence 
+  { 'andweeb/presence.nvim' },
 }, {})
