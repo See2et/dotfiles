@@ -1,75 +1,104 @@
-local status, packer = pcall(require, 'packer')
-if not status then
-  print("Packer is not installed")
-  return
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-vim.cmd [[packadd packer.nvim]]
+require('lazy').setup({
+  -- NOTE: This is where your plugins related to LSP can be installed.
+  --  The configuration is done below. Search for lspconfig to find it below.
+  { -- LSP Configuration & Plugins
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      -- Automatically install LSPs to stdpath for neovim
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
 
-packer.startup(function(use)
-  use 'wbthomason/packer.nvim' -- Package Manager Itsself
-  use {
+      -- Useful status updates for LSP
+      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+      { 'j-hui/fidget.nvim', opts = {} },
+
+      -- Additional lua configuration, makes nvim stuff amazing!
+      'folke/neodev.nvim',
+
+      -- LSP UI
+      {
+        'glepnir/lspsaga.nvim',
+        dependencies = {
+          {"nvim-tree/nvim-web-devicons"},
+          --Please make sure you install markdown and markdown_inline parser
+          {"nvim-treesitter/nvim-treesitter"}
+        }
+      }
+    },
+  },
+
+  { -- Autocompletion
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      -- Sources
+      'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip',
+      -- VScode-like pictograms
+      'onsails/lspkind.nvim'
+    },
+  },
+
+  -- Useful plugin to show you pending keybinds.
+  { 'folke/which-key.nvim', opts = {} },
+
+  { -- Theme
+    'catppuccin/nvim',
+    -- priority = 1000,
+    name = 'catppuccin',
+  },
+
+  { -- Theme which gives me solarized dark colorscheme
     'svrana/neosolarized.nvim',
-    requires = { 'tjdevries/colorbuddy.nvim' }
-  } -- One of the color schemes
-  use { "catppuccin/nvim", as = "catppuccin" } -- Another color scheme
-  -- ToDo: 反映されない
-  use 'kyazdani42/nvim-web-devicons' -- File icons
-  use 'glepnir/lspsaga.nvim' -- LSP UIs
-  use 'L3MON4D3/LuaSnip' -- Snipet
-  use 'hoob3rt/lualine.nvim' -- Statusline
-  use 'folke/lsp-colors.nvim' -- LSP colors
-  use 'onsails/lspkind-nvim' -- vscode-lie pictograms
-  use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
-  use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp sourcefor neovim's built-in LSP
-  use 'hrsh7th/nvim-cmp' -- Completion
-  use 'neovim/nvim-lspconfig' -- LSP
-  use {
+    priority = 1000,
+    dependencies = {'tjdevries/colorbuddy.vim'},
+  },
+
+  { -- Set lualine as statusline
+    'nvim-lualine/lualine.nvim',
+    -- See `:help lualine.txt`
+  },
+
+  -- Fuzzy Finder (files, lsp, etc)
+  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim' } },
+
+  -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+  -- Only load if `make` is available. Make sure you have the system
+  -- requirements installed.
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    -- NOTE: If you are having trouble with this installation,
+    --       refer to the README for telescope-fzf-native for more instructions.
+    build = 'make',
+    cond = function()
+      return vim.fn.executable 'make' == 1
+    end,
+  },
+
+  { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
-  use 'nvim-treesitter/nvim-treesitter-context' -- Show function name above when it's large
-  use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a lanuage server to inject LSP diagnostics, code actions, and more via LuaSnip
-  use 'MunifTanjim/prettier.nvim' -- Pritter plugin for Neovim's built-in
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
-  use 'windwp/nvim-autopairs'
-  use 'windwp/nvim-ts-autotag'
-  use 'akinsho/toggleterm.nvim' -- Terminal
-  use 'terrortylor/nvim-comment' -- Toggle Comment
-  use 'phaazon/hop.nvim' -- Easy motion
-  use 'yutkat/wb-only-current-line.vim' -- wb in only current line
-
-  use 'nvim-lua/plenary.nvim' -- Common utilities
-  -- brew install ripgrep
-  use 'nvim-telescope/telescope.nvim'
-  use 'nvim-telescope/telescope-file-browser.nvim'
-  -- Telekasten ~
-  use 'renerocksai/telekasten.nvim'
-  use 'renerocksai/calendar-vim'
-  use 'nvim-telescope/telescope-media-files.nvim'
-  -- ~ Telekasten
-
-  use 'akinsho/bufferline.nvim'
-  use 'norcalli/nvim-colorizer.lua'
-
-  use 'lewis6991/gitsigns.nvim'
-
-  use 'andweeb/presence.nvim' -- Discord Rich Presence
-
-  use 'github/copilot.vim' -- GitHub Copilot
-
-  use 'vim-denops/denops.vim' -- Denops
-  use { 'Allianaab2m/vimskey', branch = 'dev' } -- VimSkey'
-
-  use 'kevinhwang91/nvim-hlslens' -- Display a number of search results
-
-  use 'MunifTanjim/nui.nvim'
-  use 'VonHeikemen/fine-cmdline.nvim' -- Floating command line
-
-  -- ToDo: 「エディタのコマンドではありません」というエラーが出る
-  use {'krivahtoo/silicon.nvim', run = './install.sh'} -- Make a picture of selected code
-
-  use 'RRethy/vim-illuminate' -- Highlight other uses of the word under the cursor
-  use 'sidebar-nvim/sidebar.nvim' -- Show diagnostics, symbols and so on in the sidebar
-end)
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    config = function()
+      pcall(require('nvim-treesitter.install').update { with_sync = true })
+    end,
+  },
+}, {})

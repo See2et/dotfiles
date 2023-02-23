@@ -1,5 +1,5 @@
 local status, n = pcall(require, "neosolarized")
-if (not status) then return end
+if (not status) then print('neosolarized is not installed') return end
 
 n.setup({
   comment_italics = true,
