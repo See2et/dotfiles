@@ -1,4 +1,4 @@
-vim.cmd.colorscheme('nightfox')
+vim.cmd.colorscheme('tokyonight')
 
 vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'

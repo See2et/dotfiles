@@ -76,7 +76,8 @@ require('lazy').setup({
   { 'folke/which-key.nvim', opts = {} },
 
   -- Theme
-  { 'EdenEast/nightfox.nvim', },
+  { 'EdenEast/nightfox.nvim' },
+  { 'folke/tokyonight.nvim' },
 
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
