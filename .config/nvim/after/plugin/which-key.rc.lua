@@ -10,7 +10,14 @@ wk.register({
         a = { '<cmd>Lspsaga code_action<cr>', '[C]ode [A]ction' }
     },
     d = { '<cmd>Lspsaga hover_doc<cr>', 'Show [D]ocumentatoin' },
-    f = { function() vim.lsp.buf.format { async = true } end, '[F]ormat' },
+    f = {
+        d = { require('telescope.builtin').diagnostics, '[F]uzzy [D]iagnositcs' },
+        f = { require('telescope.builtin').find_files, '[F]uzzy [F]iles' },
+        g = { require('telescope.builtin').live_grep, '[F]uzzy by [G]rep' },
+        h = { require('telescope.builtin').help_tags, '[F]uzzy [H]elp' },
+        s = { require('telescope.builtin').grep_string, '[F]uzzy [S]tring' },
+        m = { function() vim.lsp.buf.format { async = true } end, '[F]or[m]at' }
+    },
     g = {
         d = { '<cmd>Lspsaga goto_definition<cr>', '[G]oto [D]efinition' },
         r = { require('telescope.builtin').lsp_references, '[G]oto [R]eferences' }
@@ -34,11 +41,7 @@ wk.register({
         n = { '<cmd>Lspsaga rename<cr>', '[R]e[n]ame' }
     },
     s = {
-        d = { require('telescope.builtin').diagnostics, '[S]earch [D]iagnositcs' },
-        f = { require('telescope.builtin').find_files, '[S]earch [F]iles' },
-        g = { require('telescope.builtin').live_grep, '[S]earch by [G]rep' },
-        h = { require('telescope.builtin').help_tags, '[S]earch [H]elp' },
-        p = { require('telescope.builtin').grep_string, '[S]earch [P]hrase' },
+        d = { '<cmd>Lspsaga show_line_diagnostics<cr>', '[S]how Line [D]iagnostics' },
         o = { '<cmd>so<cr>', ':so' }
     },
     -- t = {'<cmd>ToggleTerm<cr>', { silent = true}},
