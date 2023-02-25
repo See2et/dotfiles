@@ -145,4 +145,7 @@ require('lazy').setup({
 
   -- Discord Rich Presence 
   { 'andweeb/presence.nvim', lazy = true },
+
+  -- needs to install im-select
+  { 'keaising/im-select.nvim', lazy = true },
 }, {})
