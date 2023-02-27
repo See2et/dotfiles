@@ -1,3 +1,5 @@
+vim.opt.clipboard:append { 'unnamedplus' }
+
 vim.cmd.colorscheme('tokyonight')
 
 vim.scriptencoding = 'utf-8'
