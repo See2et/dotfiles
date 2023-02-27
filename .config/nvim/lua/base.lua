@@ -6,8 +6,8 @@ vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
 
-vim.wo.number = false
-vim.wo.relativenumber = false
+vim.opt.number = false
+vim.opt.relativenumber = false
 
 vim.opt.cursorline = true
 vim.opt.title = true
