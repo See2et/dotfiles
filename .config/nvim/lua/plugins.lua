@@ -107,6 +107,11 @@ require('lazy').setup({
       return vim.fn.executable 'make' == 1
     end,
   },
+  -- Zettelkasten with telescope
+  {
+    'renerocksai/telekasten.nvim',
+    dependencies = {'nvim-telescope/telescope.nvim'}
+  },
 
   { -- Highlight, edit, and navigate code
     -- When you see some erros, try `:cheackhelath nvim-treesitter`, and `:TSInstall! <lang-name>`
