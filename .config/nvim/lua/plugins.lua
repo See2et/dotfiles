@@ -135,7 +135,7 @@ require('lazy').setup({
 
   -- GitHub Copilot
   -- It needs tab key is not mapped by other plugins
-  { 'github/copilot.vim' },
+  { 'github/copilot.vim', event = 'InsertEnter' },
 
   -- Display a number of serach results
   { 'kevinhwang91/nvim-hlslens', lazy = true },
