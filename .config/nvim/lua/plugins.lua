@@ -118,7 +118,7 @@ require('lazy').setup({
     -- Zettelkasten with telescope
     {
         'renerocksai/telekasten.nvim',
-        lazy = true,
+        event = 'VeryLazy',
         config = function() require('config/telekasten') end,
         dependencies = { 'nvim-telescope/telescope.nvim', 'renerocksai/calendar-vim' }
     },

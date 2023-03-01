@@ -47,16 +47,16 @@ wk.register({
     -- t = {'<cmd>ToggleTerm<cr>', { silent = true}},
     w = { '<cmd>w<cr>', ':[w]' },
     z = {
-      [''] = { '<cmd>Telekasten panel<cr>', '[Z]ettelkasten' },
-      f = { '<cmd>Telekasten find_notes<cr>', '[Z]ettelkasten [F]ind' },
-      g = { '<cmd>Telekasten search_notes<cr>', '[Z]ettelkasten [G]rep' },
-      d = { '<cmd>Telekasten goto_today<cr>', '[Z]ettelkasten [D]ate' },
-      z = { '<cmd>Telekasten follow_link<cr>', '[Z]ettelkasten [Z]ettel' },
-      n = { '<cmd>Telekasten new_note<cr>', '[Z]ettelkasten [N]ew' },
-      c = { '<cmd>Telekasten show_calendar<cr>', '[Z]ettelkasten [C]alendar' },
-      b = { '<cmd>Telekasten show_backlinks<cr>', '[Z]ettelkasten [B]acklinks' },
-      i = { '<cmd>Telekasten insert_link<cr>', '[Z]ettelkasten [I]nsert Link' },
-      I = { '<cmd>Telekasten insert_img_link<cr>', '[Z]ettelkasten [I]mage' },
+        [''] = { '<cmd>Telekasten panel<cr>', '[Z]ettelkasten' },
+        f = { '<cmd>Telekasten find_notes<cr>', '[Z]ettelkasten [F]ind' },
+        g = { '<cmd>Telekasten search_notes<cr>', '[Z]ettelkasten [G]rep' },
+        d = { '<cmd>Telekasten goto_today<cr>', '[Z]ettelkasten [D]ate' },
+        z = { '<cmd>Telekasten follow_link<cr>', '[Z]ettelkasten [Z]ettel' },
+        n = { '<cmd>Telekasten new_note<cr>', '[Z]ettelkasten [N]ew' },
+        c = { '<cmd>Telekasten show_calendar<cr>', '[Z]ettelkasten [C]alendar' },
+        b = { '<cmd>Telekasten show_backlinks<cr>', '[Z]ettelkasten [B]acklinks' },
+        i = { '<cmd>Telekasten insert_link<cr>', '[Z]ettelkasten [I]nsert Link' },
+        I = { '<cmd>Telekasten insert_img_link<cr>', '[Z]ettelkasten [I]mage' },
     }
 }, { prefix = "<leader>" })
 
