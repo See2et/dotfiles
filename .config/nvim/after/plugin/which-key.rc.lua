@@ -47,7 +47,7 @@ wk.register({
     -- t = {'<cmd>ToggleTerm<cr>', { silent = true}},
     w = { '<cmd>w<cr>', ':[w]' },
     z = {
-      [''] = { '<cmd>Telekasten panel<cr>', '[Z]ettelkasten' },
+      z = { '<cmd>Telekasten panel<cr>', '[Z]ettelkasten' },
       f = { '<cmd>Telekasten find_notes<cr>', '[Z]ettelkasten [F]ind' },
       g = { '<cmd>Telekasten search_notes<cr>', '[Z]ettelkasten [G]rep' },
       d = { '<cmd>Telekasten goto_today<cr>', '[Z]ettelkasten [D]ate' },
