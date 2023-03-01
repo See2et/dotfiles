@@ -110,7 +110,7 @@ require('lazy').setup({
   -- Zettelkasten with telescope
   {
     'renerocksai/telekasten.nvim',
-    dependencies = {'nvim-telescope/telescope.nvim'}
+    dependencies = {'nvim-telescope/telescope.nvim', 'renerocksai/calendar-vim'}
   },
 
   { -- Highlight, edit, and navigate code
