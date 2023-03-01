@@ -46,6 +46,18 @@ wk.register({
     },
     -- t = {'<cmd>ToggleTerm<cr>', { silent = true}},
     w = { '<cmd>w<cr>', ':[w]' },
+    z = {
+      [''] = { '<cmd>Telekasten panel<cr>', '[Z]ettelkasten' },
+      f = { '<cmd>Telekasten find_notes<cr>', '[Z]ettelkasten [F]ind' },
+      g = { '<cmd>Telekasten search_notes<cr>', '[Z]ettelkasten [G]rep' },
+      d = { '<cmd>Telekasten goto_today<cr>', '[Z]ettelkasten [D]ate' },
+      z = { '<cmd>Telekasten follow_link<cr>', '[Z]ettelkasten [Z]ettel' },
+      n = { '<cmd>Telekasten new_note<cr>', '[Z]ettelkasten [N]ew' },
+      c = { '<cmd>Telekasten show_calendar<cr>', '[Z]ettelkasten [C]alendar' },
+      b = { '<cmd>Telekasten show_backlinks<cr>', '[Z]ettelkasten [B]acklinks' },
+      i = { '<cmd>Telekasten insert_link<cr>', '[Z]ettelkasten [I]nsert Link' },
+      I = { '<cmd>Telekasten insert_img_link<cr>', '[Z]ettelkasten [I]mage' },
+    }
 }, { prefix = "<leader>" })
 
 -- nothing as prefix
@@ -56,14 +68,14 @@ wk.register({
         c = { '<cmd>HopChar2<cr>', '[M]ove to [C]hars' },
     },
     s = {
-        s = { '<cmd>split<CR><C-w>w', '[S]plit', { silent = true } },
-        v = { '<cmd>vsplit<CR><C-w>w', '[S]plit [V]ertical', { silent = true } },
+        s = { '<cmd>split<cr><C-w>w', '[S]plit', { silent = true } },
+        v = { '<cmd>vsplit<cr><C-w>w', '[S]plit [V]ertical', { silent = true } },
     },
     t = {
-        e = { '<cmd>tabedit<CR>', '[T]ab [E]dit', { silent = true } },
-        d = { '<cmd>tabclose<CR>', '[T]ab [D]elete', { silent = true } },
-        l = { '<cmd>BufferLineCyclePrev<CR>', 'Go Prev [T]ab' },
-        h = { '<cmd>BufferLineCycleNext<CR>', 'Go Next [T]ab' },
+        e = { '<cmd>tabedit<cr>', '[T]ab [E]dit', { silent = true } },
+        d = { '<cmd>tabclose<cr>', '[T]ab [D]elete', { silent = true } },
+        l = { '<cmd>BufferLineCyclePrev<cr>', 'Go Prev [T]ab' },
+        h = { '<cmd>BufferLineCycleNext<cr>', 'Go Next [T]ab' },
     },
     J = { '<C-d><C-d>', 'Go Prev Page' },
     K = { '<C-u><C-u>', 'Go Next Page' },
