@@ -20,6 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- Package manager itself
   { "folke/lazy.nvim", tag = "stable" },
+  { 'dstein64/vim-startuptime', lazy = true },
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   { -- LSP Configuration & Plugins
