@@ -20,12 +20,13 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- Package manager itself
   { "folke/lazy.nvim", tag = "stable" },
-  { 'dstein64/vim-startuptime', lazy = true },
+  { 'dstein64/vim-startuptime' },
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
-    lazy = true,
+    event = 'BufReadPre',
+    config = function() require('config/lspconfig') end,
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       {'williamboman/mason.nvim'},
@@ -39,16 +40,19 @@ require('lazy').setup({
       'folke/neodev.nvim',
 
       -- prettier
-      { 'MunifTanjim/prettier.nvim', 
+      { 'MunifTanjim/prettier.nvim',
+        config = function() require('config/prettier') end,
         dependencies = {
           -- make non-lsp systems work with LSP
           'jose-elias-alvarez/null-ls.nvim',
+          config = function() require('config/null-ls') end,
         }
       },
 
       -- LSP UI
       {
         'glepnir/lspsaga.nvim',
+        config = function() require('config/lspsaga') end,
         dependencies = {
           {"nvim-tree/nvim-web-devicons"},
           --Please make sure you install markdown and markdown_inline parser
@@ -60,7 +64,8 @@ require('lazy').setup({
 
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    lazy = true,
+    event = 'InsertEnter',
+    config = function() require('config/cmp') end,
     dependencies = {
       -- Sources
       'hrsh7th/cmp-nvim-lsp',
@@ -74,63 +79,67 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim', lazy = false, opts = {}, config = function() require('config/which-key') end },
 
   -- Theme
-  { 'EdenEast/nightfox.nvim' },
-  { 'folke/tokyonight.nvim' },
+  { 'EdenEast/nightfox.nvim', config = function() require('config/nightfox') end},
+  { 'folke/tokyonight.nvim', config = function() require('config/tokyonight') end },
 
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
+    lazy = false,
     -- See `:help lualine.txt`
-    lazy = true,
+    config = function() require('config/lualine') end,
   },
 
   { -- Tab
     'akinsho/bufferline.nvim',
-    lazy = true,
+    event = 'VeryLazy',
     dependencies = {'nvim-tree/nvim-web-devicons'}
   },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', lazy = true, version = '*', dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim' } },
-
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+  { 'nvim-telescope/telescope.nvim', lazy = 'VeryLazy', config = function() require('config/telescope') end, version = '*', dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim', -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
   -- requirements installed.
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     -- NOTE: If you are having trouble with this installation,
     --       refer to the README for telescope-fzf-native for more instructions.
-    lazy = true,
     build = 'make',
     cond = function()
       return vim.fn.executable 'make' == 1
     end,
-  },
+  }, } },
+
+  
   -- Zettelkasten with telescope
   {
     'renerocksai/telekasten.nvim',
+    lazy = true,
+    config = function() require('config/telekasten') end,
     dependencies = {'nvim-telescope/telescope.nvim', 'renerocksai/calendar-vim'}
   },
 
   { -- Highlight, edit, and navigate code
     -- When you see some erros, try `:cheackhelath nvim-treesitter`, and `:TSInstall! <lang-name>`
     'nvim-treesitter/nvim-treesitter',
-    lazy = true,
+    event = 'VeryLazy',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     config = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
+      require('config/treesitter')
     end,
   },
   -- adds indentation guides to all lines (including empty lines)
-  { "lukas-reineke/indent-blankline.nvim", lazy = true },
+  { "lukas-reineke/indent-blankline.nvim", event = 'CursorHold', config = function() require('config/blankline') end },
 
   { -- EasyMotion
     'phaazon/hop.nvim',
-    lazy = true,
+    event = 'CursorHold',
+    config = function() require('config/hop') end,
     branch = 'v2', -- optional but strongly recommended
   },
 
@@ -139,19 +148,19 @@ require('lazy').setup({
   { 'github/copilot.vim', event = 'InsertEnter' },
 
   -- Display a number of serach results
-  { 'kevinhwang91/nvim-hlslens', lazy = true },
+  { 'kevinhwang91/nvim-hlslens', event = 'CursorHold', config = function() require('config/hlslens') end },
 
   -- Awesome autopair plugin
-  { 'windwp/nvim-autopairs', lazy = true },
+  { 'windwp/nvim-autopairs', event = 'InsertEnter', config = function() require('config/autopairs') end },
   -- Also autopair for html tags
-  { 'windwp/nvim-ts-autotag', lazy = true },
+  { 'windwp/nvim-ts-autotag', event = 'InsertEnter', config = function() require('config/ts-autotag') end },
 
   -- Adds git releated signs to the gutter, as well as utilities for managing changes
-  { 'lewis6991/gitsigns.nvim', lazy = true },
+  { 'lewis6991/gitsigns.nvim', event = 'CursorHold', config = function() require('config/gitsigns') end },
 
   -- Discord Rich Presence 
-  { 'andweeb/presence.nvim', lazy = true },
+  { 'andweeb/presence.nvim', lazy = false, config = function() require('config/presence') end },
 
   -- needs to install im-select
-  { 'keaising/im-select.nvim', lazy = true },
+  { 'keaising/im-select.nvim', event = 'InsertEnter', config = function() require('config/im-select') end },
 }, {})
