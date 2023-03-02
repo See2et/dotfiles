@@ -12,7 +12,7 @@ vim.g.mapleader = " "
 
 -- Terminal
 tmap('<ESC>', '<C-\\><C-n>')
-tmap('<leader><leader>t', '<cmd>ToggleTerm<cr>', { silent = true })
+-- tmap('<leader><leader>t', '<cmd>ToggleTerm<cr>', { silent = true })
 
 nmap('sh', '<C-w>h')
 nmap('sj', '<C-w>j')
