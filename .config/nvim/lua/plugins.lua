@@ -97,6 +97,7 @@ require('lazy').setup({
     { -- Tab
         'akinsho/bufferline.nvim',
         event = 'VeryLazy',
+        config = function() require('config/bufferline') end,
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
 
