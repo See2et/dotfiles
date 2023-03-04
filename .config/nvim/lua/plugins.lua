@@ -140,7 +140,7 @@ require('lazy').setup({
     { "lukas-reineke/indent-blankline.nvim", event = 'CursorHold',  config = function() require('config/blankline') end },
     { -- EasyMotion
         'phaazon/hop.nvim',
-        event = 'CursorHold',
+        event = 'BufReadPre',
         config = function() require('config/hop') end,
         branch = 'v2', -- optional but strongly recommended
     },
@@ -150,7 +150,7 @@ require('lazy').setup({
     { 'github/copilot.vim',                  event = 'InsertEnter' },
 
     -- Display a number of serach results
-    { 'kevinhwang91/nvim-hlslens',           event = 'CursorHold',  config = function() require('config/hlslens') end },
+    { 'kevinhwang91/nvim-hlslens',           event = 'BufReadPre',  config = function() require('config/hlslens') end },
 
     -- Awesome autopair plugin
     { 'windwp/nvim-autopairs',               event = 'InsertEnter', config = function() require('config/autopairs') end },
