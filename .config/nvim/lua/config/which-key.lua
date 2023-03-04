@@ -64,7 +64,7 @@ wk.register({
 wk.register({
     m = {
         w = { '<cmd>HopWord<cr>', '[M]ove to [W]ord' },
-        l = { '<cmd>HopLine<cr>^', '[M]ove to [L]ine' },
+        l = { '<cmd>HopLineStart<cr>', '[M]ove to [L]ine' },
         c = { '<cmd>HopChar2<cr>', '[M]ove to [C]hars' },
     },
     s = {
