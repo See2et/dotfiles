@@ -64,7 +64,7 @@ wk.register({
 wk.register({
     m = {
         w = { '<cmd>HopWord<cr>', '[M]ove to [W]ord' },
-        l = { '<cmd>HopLine<cr>', '[M]ove to [L]ine' },
+        l = { '<cmd>HopLine<cr>^', '[M]ove to [L]ine' },
         c = { '<cmd>HopChar2<cr>', '[M]ove to [C]hars' },
     },
     s = {
@@ -74,8 +74,8 @@ wk.register({
     t = {
         e = { '<cmd>tabedit<cr>', '[T]ab [E]dit', { silent = true } },
         d = { '<cmd>tabclose<cr>', '[T]ab [D]elete', { silent = true } },
-        l = { '<cmd>BufferLineCyclePrev<cr>', 'Go Prev [T]ab' },
-        h = { '<cmd>BufferLineCycleNext<cr>', 'Go Next [T]ab' },
+        l = { '<cmd>BufferLineCycleNext<cr>', 'Go Prev [T]ab' },
+        h = { '<cmd>BufferLineCyclePrev<cr>', 'Go Next [T]ab' },
     },
     J = { '<C-d><C-d>', 'Go Prev Page' },
     K = { '<C-u><C-u>', 'Go Next Page' },
