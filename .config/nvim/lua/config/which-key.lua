@@ -82,6 +82,7 @@ wk.register({
     K = { '<C-u><C-u>', 'Go Next Page' },
     L = { '$', 'Go Sentence Ending' },
     H = { '^', 'Go Sentence Beginning' },
+    U = { '<C-r>', 'Reset' },
     ['['] = {
         d = { '<cmd>Lspsaga diagnostic_jump_next<cr>', 'Jump Next [D]iagnostics' }
     },
