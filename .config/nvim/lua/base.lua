@@ -30,7 +30,8 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.ai = true -- Auto indent
 vim.opt.si = true -- Smart indent
-vim.opt.wrap = false -- No wrap lines
+vim.opt.wrap = true -- wrap lines
+vim.opt.linebreak = true -- Wrap lines at words
 vim.opt.backspace = 'start,eol,indent'
 vim.opt.path:append { '**' } -- Finding files - Search down into subfolders
 vim.opt.wildignore:append { '*/node_modules/*' }
