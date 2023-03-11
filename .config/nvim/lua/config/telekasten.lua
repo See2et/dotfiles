@@ -13,7 +13,7 @@ telekasten.setup {
     weeklies              = home .. '/' .. 'Calendar',
     templates             = home .. '/' .. 'Extras' .. '/' .. 'Templates',
     image_subdir          = home .. '/' .. 'Extras' .. '/' .. 'Images',
-    template_new_note = home .. '/' .. 'Extras' .. '/' .. 'Templates' .. '/' .. 'Template, Note.md',
-    template_new_daily = home .. '/' .. 'Extras' .. '/' .. 'Templates' .. '/' .. 'Template, Daily Note.md',
+    template_new_note     = home .. '/' .. 'Extras' .. '/' .. 'Templates' .. '/' .. 'Template, Note.md',
+    template_new_daily    = home .. '/' .. 'Extras' .. '/' .. 'Templates' .. '/' .. 'Template, Daily Note.md',
     command_palette_theme = 'dropdown',
 }
