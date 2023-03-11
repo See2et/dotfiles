@@ -57,6 +57,7 @@ wk.register({
         b = { '<cmd>Telekasten show_backlinks<cr>', '[Z]ettelkasten [B]acklinks' },
         i = { '<cmd>Telekasten insert_link<cr>', '[Z]ettelkasten [I]nsert Link' },
         I = { '<cmd>Telekasten insert_img_link<cr>', '[Z]ettelkasten [I]mage' },
+        t = { '<cmd>Telekasten new_templated_note<cr>', '[Z]ettelkasten [T]emplate' },
     }
 }, { prefix = "<leader>" })
 
