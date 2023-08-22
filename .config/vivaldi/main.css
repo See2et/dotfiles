@@ -1,0 +1,4 @@
+div#header {
+  visibility: collapse;
+  min-height: 0 !important;
+}
