@@ -43,7 +43,10 @@ return {
         border = "double",
         colors = {
           normal_bg = ""
-        }
+        },
+      },
+      lightbulb = {
+        sign = false
       }
     }
   end,
