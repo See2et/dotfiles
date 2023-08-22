@@ -1,3 +1,26 @@
+local keymap = vim.keymap
+local kmap = keymap.set
+local nmap = function(key, map, ops)
+  kmap("n", key, map, ops)
+end
+local tmap = function(key, map, ops)
+  kmap("t", key, map, ops)
+end
+
+vim.g.mapleader = " "
+
+tmap('<ESC>', '<C-\\><C-n>')
+
+nmap('sh', '<C-w>h')
+nmap('sj', '<C-w>j')
+nmap('sk', '<C-w>k')
+nmap('sl', '<C-w>l')
+
+nmap('<C-h>', '<C-w>>')
+nmap('<C-j>', '<C-w>+')
+nmap('<C-k>', '<C-w>-')
+nmap('<C-l>', '<C-w><')
+
 require("which-key").register({
   m = {
     w = { '<cmd>HopWord<cr>', '[M]ove to [W]ord' },
@@ -9,6 +32,10 @@ require("which-key").register({
   s = {
     s = { '<cmd>split<cr><C-w>w', '[S]plit', { silent = true } },
     v = { '<cmd>vsplit<cr><C-w>w', '[S]plit [V]ertical', { silent = true } },
+    h = { '<C-w>h' },
+    j = { '<C-w>j' },
+    k = { '<C-w>k' },
+    l = { 'C-w>l' },
   },
   t = {
     e = { '<cmd>tabedit<cr>', '[T]ab [E]dit', { silent = true } },
