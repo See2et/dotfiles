@@ -2,6 +2,8 @@ vim.cmd.colorscheme("tokyonight")
 
 local opt = vim.opt
 
+opt.clipboard:append { 'unnamedplus' }
+
 opt.writebackup = false
 opt.backup = false
 opt.swapfile = false

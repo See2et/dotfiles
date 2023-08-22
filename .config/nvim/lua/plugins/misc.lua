@@ -26,7 +26,6 @@ return {
 
   {
     'nvim-telescope/telescope.nvim',
-    lazy = true,
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-file-browser.nvim',
@@ -34,7 +33,7 @@ return {
     config = function()
       require('telescope').setup {
         defaults = {
-          previwer = true,
+          previewer = true,
           mappings = {
             n = {
               ["<C-[>"] = require('telescope.actions').close,
@@ -46,34 +45,33 @@ return {
               ["<leader>q"] = require('telescope.actions').close,
             },
           },
-          extensions = {
-            file_browser = {
-              theme = "dropdown",
-              mappings = {
-                -- your custom insert mode mappings
-                ["i"] = {
-                  ["<C-w>"] = function() vim.cmd('normal vbd') end,
-                },
-                ["n"] = {
-                  -- your custom normal mode mappings
-                  ["N"] = require('telescope').extensions.file_browser.actions.create,
-                  ["h"] = require('telescope').extensions.file_browser.actions.goto_parent_dir,
-                  ["/"] = function()
-                    vim.cmd('startinsert')
-                  end
-                },
+        },
+        extensions = {
+          file_browser = {
+            theme = "dropdown",
+            hijack_netrw = true,
+            mappings = {
+              ["i"] = {
+                ["<C-w>"] = function() vim.cmd('normal vbd') end,
               },
-              hijack_netrw = true,
-              path = "%:p:h",
-              cwd = vim.fn.expand('%:p:h'),
-              respect_gitignore = false,
-              hidden = true,
-              grouped = true,
-              initial_mode = "normal",
-              layout_config = { height = 40 }
+              ["n"] = {
+                -- your custom normal mode mappings
+                ["N"] = require("telescope").extensions.file_browser.actions.create,
+                ["h"] = require("telescope").extensions.file_browser.actions.goto_parent_dir,
+                ["/"] = function()
+                  vim.cmd('startinsert')
+                end
+              },
             },
+            path = "%:p:h",
+            cwd = vim.fn.expand('%:p:h'),
+            respect_gitignore = false,
+            hidden = true,
+            grouped = true,
+            initial_mode = "normal",
+            layout_config = { height = 40 }
           },
-        }
+        },
       }
       require('telescope').load_extension('noice')
       require('telescope').load_extension('file_browser')
