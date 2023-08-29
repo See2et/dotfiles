@@ -12,7 +12,35 @@
     win:focus()
   end
 end)]]
-       --
+--
+
+hs.hotkey.bind({ "ctrl" }, "s", function()
+  local app = hs.application.get("Obsidian")
+  if app == nil then
+    hs.application.launchOrFocus("/Applications/Obsidian.app")
+  elseif app:isFrontmost() then
+    app:hide()
+  else
+    local space = hs.spaces.focusedSpace()
+    local win = app:focusedWindow()
+    hs.spaces.moveWindowToSpace(win, space)
+    win:focus()
+  end
+end)
+
+hs.hotkey.bind({ "ctrl" }, "d", function()
+  local app = hs.application.get("Arc")
+  if app == nil then
+    hs.application.launchOrFocus("/Applications/Arc.app")
+  elseif app:isFrontmost() then
+    app:hide()
+  else
+    local space = hs.spaces.focusedSpace()
+    local win = app:focusedWindow()
+    hs.spaces.moveWindowToSpace(win, space)
+    win:focus()
+  end
+end)
 
 -- To get a keyboard id, use hs.keycodes.currentSourceID() on hammerspoon terminal
 hs.hotkey.bind({ "ctrl", "alt" }, "j", function()
