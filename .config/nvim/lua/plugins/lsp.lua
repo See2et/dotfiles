@@ -27,9 +27,45 @@ return {
         vim.lsp.buf.format()
       end, { desc = 'Format current buffer with LSP' })
     end
+    local package_json_dir = nvim_lsp.util.root_pattern("package.json")
+    local deno_json_dir = nvim_lsp.util.root_pattern("deno.json")
+    local deno_jsonc_dir = nvim_lsp.util.root_pattern("deno.jsonc")
+    local exist_file = function(directory)
+      return directory(vim.api.nvim_buf_get_name(0)) ~= nil
+    end
     mason_lsp.setup_handlers {
       function(server)
         local opt = {}
+        if server == 'tsserver' then
+          if not exist_file(package_json_dir) then return end
+          opt.root_dir = nvim_lsp.util.root_pattern("package.json")
+          opt.cmd = { "typescript-language-server", "--stdio" }
+          opt.single_file_support = false
+        elseif server == 'eslint' then
+          if not exist_file(package_json_dir) then return end
+          opt.root_dir = nvim_lsp.util.root_pattern("package.json")
+        elseif server == 'denols' then
+          if exist_file(package_json_dir) then return end
+          -- denoはdeno.jsonがなくても動くのでこのif文を書いてみてる
+          if exist_file(deno_json_dir) then
+            opt.root_dir = nvim_lsp.util.root_pattern("deno.json")
+          elseif exist_file(deno_jsonc_dir) then
+            opt.root_dir = nvim_lsp.util.root_pattern("deno.jsonc")
+          end
+          opt.init_options = {
+            lint = true,
+            unstable = true,
+            suggest = {
+              imports = {
+                hosts = {
+                  ["https://deno.land"] = true,
+                  ["https://cdn.nest.land"] = true,
+                  ["https://crux.land"] = true,
+                },
+              },
+            },
+          }
+        end
         opt.on_attach = on_attach
         opt.capabilities = capabilities
         opt.settings = servers[server]
