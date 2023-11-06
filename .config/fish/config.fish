@@ -20,6 +20,9 @@ fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/sbin
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.deno/bin
+fish_add_path ~/.cargo/env
+set -x GOPATH $HOME/go
+set -x PATH $PATH $GOPATH/bin
 
 function fish_user_key_bindings
   bind €cr 'peco_select_history (commandline -b)'
@@ -29,7 +32,7 @@ balias v nvim
 balias g git
 balias cl clear
 balias fish_load . ~/.config/fish
-balias gs 'cd $(ghq root)/$(ghq list | peco)'
+balias gs 'cd (ghq root)/(ghq list | peco)'
 balias ph 'peco_select_history (commandline -b)'
 
 function __fish_cancel_commandline
