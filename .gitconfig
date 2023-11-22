@@ -1,0 +1,21 @@
+[core]
+	excludesfile = /Users/see2et/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = see2et
+	email = seezet1024@gmail.com
+[commit]
+	template = /Users/see2et/.stCommitMsg
+[init]
+	defaultBranch = main
+[ghq]
+	root = ~/repos
+[safe]
+	directory = /Users/see2et/repos/github.com/lima-vm/vde_vmnet
+[format]
+	pretty = 作成日: %Cblue %ci%Creset%Creset 作成者: %Cblue%an%Creset %Cred%d%Creset%n%Cgreen%t%Creset %m%m %s%n
