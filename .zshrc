@@ -24,6 +24,11 @@ HISTFILE=~/.zsh_history
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
 source ~/antigen.zsh
+export NVIM_APPNAME=nvim
+
+# alias
+alias up="cd ../"
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Use modern completion system
 autoload -Uz compinit
@@ -52,6 +57,7 @@ antigen theme romkatv/powerlevel10k
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle rupa/z z.sh
+antigen-bundle Tarrasch/zsh-bd
 antigen apply
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
