@@ -1,6 +1,7 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off # see https://github.com/romkatv/powerlevel10k#instant-prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -12,6 +13,26 @@ promptinit
 prompt adam1
 
 setopt histignorealldups sharehistory
+
+# Is Dotfiles Dirty?
+# see https://korosuke613.hatenablog.com/entry/2021/05/23/mydotfiles
+
+dotfiles_home="~/.dotfiles"
+
+if test -n "$(git -C ${dotfiles_home} status --porcelain)" ||
+   ! git -C ${dotfiles_home} diff --exit-code --stat --cached origin/main > /dev/null ; then
+  echo -e "\e[36m=== DOTFILES IS DIRTY ===\e[m"
+  echo -e "\e[33mThe dotfiles have been changed.\e[m"
+  echo -e "\e[33mPlease update them with the following command.\e[m"
+  echo "  cd ${dotfiles_home}"
+  echo "  git add ."
+  echo "  git commit -m \"update dotfiles\""
+  echo "  git push origin main"
+  echo -e "\e[33mor\e[m"
+  echo "  git push origin main"
+  echo -e "\e[36m=========================\e[m"
+fi
+
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
@@ -28,6 +49,7 @@ export NVIM_APPNAME=nvim
 
 # alias
 alias up="cd ../"
+alias cl="clear"
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Use modern completion system
@@ -57,7 +79,8 @@ antigen theme romkatv/powerlevel10k
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle rupa/z z.sh
-antigen-bundle Tarrasch/zsh-bd
+antigen bundle Tarrasch/zsh-bd
+antigen bundle paulirish/git-open
 antigen apply
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
