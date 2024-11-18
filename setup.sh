@@ -39,6 +39,7 @@ bob install stable
 bob use stable
 sudo apt install ripgrep
 sudo apt install xclip
+sudo apt install unzip # some lsp needs this: denols...etc
 
 # lsd (modern ls)
 cargo install lsd
