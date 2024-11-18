@@ -45,6 +45,7 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export NVM_DIR=$home/.nvm
+export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
 
 # alias
 alias up="cd ../"
