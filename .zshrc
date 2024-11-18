@@ -14,26 +14,6 @@ prompt adam1
 
 setopt histignorealldups sharehistory
 
-# Is Dotfiles Dirty?
-# see https://korosuke613.hatenablog.com/entry/2021/05/23/mydotfiles
-
-dotfiles_home="~/.dotfiles"
-
-if test -n "$(git -C ${dotfiles_home} status --porcelain)" ||
-   ! git -C ${dotfiles_home} diff --exit-code --stat --cached origin/main > /dev/null ; then
-  echo -e "\e[36m=== DOTFILES IS DIRTY ===\e[m"
-  echo -e "\e[33mThe dotfiles have been changed.\e[m"
-  echo -e "\e[33mPlease update them with the following command.\e[m"
-  echo "  cd ${dotfiles_home}"
-  echo "  git add ."
-  echo "  git commit -m \"update dotfiles\""
-  echo "  git push origin main"
-  echo -e "\e[33mor\e[m"
-  echo "  git push origin main"
-  echo -e "\e[36m=========================\e[m"
-fi
-
-
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
@@ -46,6 +26,12 @@ HISTFILE=~/.zsh_history
 export PATH="$HOME/.local/bin:$PATH"
 source ~/antigen.zsh
 export NVIM_APPNAME=nvim
+source ~/.cargo/bin
+source ~/.deno/bin
+source ~/.local/share/nvm/v22.2.0/bin
+source ~/.local/bin
+export GOPATH=$home/go
+export NVM_DIR=$home/.nvm
 
 # alias
 alias up="cd ../"
