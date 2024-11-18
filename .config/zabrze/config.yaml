@@ -3,3 +3,12 @@ abbrevs:
   - name: nvim
     abbr: v
     snippet: nvim
+  - name: lsd -alF
+    abbr: ll
+    snippet: lsd -alF
+  - name: lsd
+    abbr: ls
+    snippet: lsd
+  - name: lsd -altr
+    abbr: la
+    snippet: lsd -altr
