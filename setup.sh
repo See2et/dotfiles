@@ -25,6 +25,15 @@ export NVM_DIR="$HOME/.nvm"
 nvm install --lts
 nvm use --lts
 
+# python
+sudo apt install -y python3-pip
+sudo apt install -y software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install -y python3.10 python3.10-venv # 任意のバージョン
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.10 310
+# sudo update-alternatives --config python # 切り替えるときはこれ
+
 # rust
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 sudo apt install build-essential
