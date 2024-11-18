@@ -1,0 +1,5 @@
+# ~/.config/zabrze/config.yaml
+abbrevs:
+  - name: nvim
+    abbr: v
+    snippet: nvim

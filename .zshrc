@@ -27,6 +27,7 @@ export PATH="$HOME/.local/bin:$PATH"
 source ~/antigen.zsh
 export NVIM_APPNAME=nvim
 source ~/.cargo/bin
+source ~/.cargo/env
 source ~/.deno/bin
 source ~/.local/share/nvm/v22.2.0/bin
 source ~/.local/bin
