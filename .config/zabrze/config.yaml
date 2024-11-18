@@ -15,3 +15,6 @@ abbrevs:
   - name: lazygit
     abbr: lg
     snippet: lazygit
+  - name: batcat
+    abbr: bat
+    snippet: batcat
