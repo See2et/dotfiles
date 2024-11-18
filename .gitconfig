@@ -1,0 +1,7 @@
+[user]
+	email = me.see2et@gmail.com
+	name = See2et / しーぜっと
+[init]
+	defaultBranch = main
+[ghq]
+	root=~/repos
