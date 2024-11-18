@@ -22,6 +22,17 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
+ZSH_DIR="${HOME}/.zsh.d"
+
+# .zshがディレクトリで、読み取り、実行、が可能なとき
+if [ -d $ZSH_DIR ] && [ -r $ZSH_DIR ] && [ -x $ZSH_DIR ]; then
+    # zshディレクトリより下にある、.zshファイルの分、繰り返す
+    for file in ${ZSH_DIR}/**/*.zsh; do
+        # 読み取り可能ならば実行する
+        [ -r $file ] && source $file
+    done
+fi
+
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
 source ~/antigen.zsh
@@ -31,13 +42,16 @@ source ~/.cargo/env
 source ~/.deno/bin
 source ~/.local/share/nvm/v22.2.0/bin
 source ~/.local/bin
-export GOPATH=$home/go
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export NVM_DIR=$home/.nvm
 
 # alias
 alias up="cd ../"
 alias cl="clear"
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+tre() { command tre "$@" -e nvim && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
 
 # Use modern completion system
 autoload -Uz compinit
@@ -69,6 +83,11 @@ antigen bundle rupa/z z.sh
 antigen bundle Tarrasch/zsh-bd
 antigen bundle paulirish/git-open
 antigen apply
+
+# zabrze
+eval "$(zabrze init --bind-keys)"
+
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
