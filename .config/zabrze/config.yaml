@@ -12,3 +12,6 @@ abbrevs:
   - name: lsd -altr
     abbr: la
     snippet: lsd -altr
+  - name: lazygit
+    abbr: lg
+    snippet: lazygit
