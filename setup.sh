@@ -37,6 +37,8 @@ cargo install bob-nvim
 # nvim
 bob install stable
 bob use stable
+sudo apt install ripgrep
+sudo apt install xclip
 
 # lsd (modern ls)
 cargo install lsd
