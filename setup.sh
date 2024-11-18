@@ -19,6 +19,10 @@ bob use stable
 # lsd (modern ls)
 cargo install lsd
 
+# zabrze (modern abbr)
+cargo install zabrze
+eval "$(zabrze init --bind-keys)"
+
 # zsh as login shell
 sudo chsh -s "$(which zsh)" $USER
 # antigen (plugin manager for zsh)
