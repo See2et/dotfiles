@@ -7,10 +7,12 @@ sudo apt install zsh
 
 # rust
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+sudo apt install build-essential
+source $HOME/.cargo/env
+source $HOME/.cargo/bin
 
 # bob (nvim-version manager)
 cargo install bob-nvim
-bob
 
 # nvim
 bob install stable
@@ -21,7 +23,14 @@ cargo install lsd
 
 # zabrze (modern abbr)
 cargo install zabrze
-eval "$(zabrze init --bind-keys)"
+
+# go
+sudo add-apt-repository -y ppa:longsleep/golang-backports
+sudo apt-get update
+sudo apt-get install --no-install-recommends -y golang
+
+# ghq
+go install github.com/x-motemen/ghq@latest
 
 # zsh as login shell
 sudo chsh -s "$(which zsh)" $USER
@@ -29,4 +38,3 @@ sudo chsh -s "$(which zsh)" $USER
 curl -L git.io/antigen > antigen.zsh
 # launch zsh
 zsh
-
