@@ -76,6 +76,9 @@ return {
         if server == "tsserver" then
           if not exist_file(lspconfig.util.root_pattern("package.json")) then return end
         end
+        if server == "lua_ls" then
+          require("neodev").setup()
+        end
 
         opt = servers[server]
         opt.capabilities = capabilities
