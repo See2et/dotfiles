@@ -14,7 +14,7 @@ vim-fzf-find() {
         ${EDITOR:-nvim} $FILE
     fi
 }
-alias fv=vim-fzf-find
+alias vv=vim-fzf-find
 
 function cd-fzf-ghqlist() {
     local GHQ_ROOT=`ghq root`
