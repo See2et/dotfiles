@@ -5,6 +5,17 @@ sudo apt update
 sudo apt upgrade
 sudo apt install zsh
 
+# deno
+sudo apt install -y p7zip-full
+curl -fsSL https://deno.land/x/install/install.sh | sh
+
+# nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+nvm install --lts
+nvm use --lts
+
 # rust
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 sudo apt install build-essential
