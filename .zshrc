@@ -40,7 +40,6 @@ source ~/.cargo/bin
 source ~/.cargo/env
 source ~/.deno/bin
 source ~/.deno/env
-source ~/.local/share/nvm/v22.2.0/bin
 source ~/.local/bin
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
