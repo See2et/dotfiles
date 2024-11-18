@@ -32,6 +32,9 @@ sudo apt-get install --no-install-recommends -y golang
 # ghq
 go install github.com/x-motemen/ghq@latest
 
+# fzf
+sudo apt install fzf
+
 # zsh as login shell
 sudo chsh -s "$(which zsh)" $USER
 # antigen (plugin manager for zsh)
