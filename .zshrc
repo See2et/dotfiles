@@ -39,6 +39,7 @@ export NVIM_APPNAME=nvim
 source ~/.cargo/bin
 source ~/.cargo/env
 source ~/.deno/bin
+source ~/.deno/env
 source ~/.local/share/nvm/v22.2.0/bin
 source ~/.local/bin
 export GOROOT=/usr/local/go
@@ -94,4 +95,3 @@ export FZF_TMUX_OPTS="-p 80%"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
