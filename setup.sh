@@ -53,6 +53,9 @@ sudo apt install unzip # some lsp needs this: denols...etc
 # lsd (modern ls)
 cargo install lsd
 
+# tre (alternative tree command)
+cargo install tre-command
+
 # zabrze (modern abbr)
 cargo install zabrze
 
