@@ -62,7 +62,8 @@ return {
                 }
             },
             omnisharp = {},
-            rust_analyzer = {}
+            rust_analyzer = {},
+            taplo = {}
         }
 
         mason.setup()
