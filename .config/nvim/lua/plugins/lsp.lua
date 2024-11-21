@@ -63,7 +63,8 @@ return {
             },
             omnisharp = {},
             rust_analyzer = {},
-            taplo = {}
+            taplo = {},
+            tinymist = {}
         }
 
         mason.setup()
