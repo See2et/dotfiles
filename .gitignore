@@ -4,3 +4,5 @@
 .codex/auth.json
 .codex/history.jsonl
 .codex/version.json
+.codex/.secrets
+.codex/.serena

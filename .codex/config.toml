@@ -9,3 +9,6 @@ args = ["--from", "git+https://github.com/oraios/serena", "serena-mcp-server", "
 [mcp_servers.context7]
 args = ["-y", "@upstash/context7-mcp"]
 command = "npx"
+
+[mcp_servers.github]
+command = "/home/see2et/.codex/github-mcp.sh"
