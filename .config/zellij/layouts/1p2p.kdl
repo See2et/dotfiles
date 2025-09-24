@@ -1,0 +1,22 @@
+layout {
+    tab{
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane command="nvim"
+        pane size=1 borderless=true {
+            plugin location="status-bar"
+        }
+    }
+    tab{
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane command="codex"
+        pane
+        pane size=1 borderless=true {
+            plugin location="status-bar"
+        }
+    }
+
+}
