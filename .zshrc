@@ -46,8 +46,15 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
 export NVM_DIR="$HOME/.nvm"
+export PKG_CONFIG_PATH=/usr/lib/pkgconfig
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+export OPENSSL_DIR=/usr/lib/ssl
+export OPENAI_API_KEY=0000 # dummy
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# typst
+export TYPST_FONT_PATHS=~/.fonts/
 
 # alias
 alias up="cd ../"
