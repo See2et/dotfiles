@@ -18,3 +18,6 @@ abbrevs:
   - name: batcat
     abbr: bat
     snippet: batcat
+  - name: zellij
+    abbr: ze
+    snippet: zellij --layout 1p2p
