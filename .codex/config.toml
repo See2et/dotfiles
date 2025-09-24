@@ -5,3 +5,7 @@ projects = { "/home/see2et/.config/nvim" = { trust_level = "trusted" } , "/home/
 [mcp_servers.serena]
 command = "uvx"
 args = ["--from", "git+https://github.com/oraios/serena", "serena-mcp-server", "--context", "codex", "--enable-web-dashboard", "false"]
+
+[mcp_servers.context7]
+args = ["-y", "@upstash/context7-mcp"]
+command = "npx"
