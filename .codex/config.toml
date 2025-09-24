@@ -1,3 +1,7 @@
 model = "gpt-5-codex"
 model_reasoning_effort = "medium"
-projects = { "/home/see2et/.config/nvim" = { trust_level = "trusted" } }
+projects = { "/home/see2et/.config/nvim" = { trust_level = "trusted" } , "/home/see2et/.codex" = { trust_level = "trusted" } }
+
+[mcp_servers.serena]
+command = "uvx"
+args = ["--from", "git+https://github.com/oraios/serena", "serena-mcp-server", "--context", "codex", "--enable-web-dashboard", "false"]
