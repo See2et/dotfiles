@@ -24,41 +24,37 @@ nmap('<C-l>', '<C-w><')
 vim.keymap.set('n', 'x', '"_x')
 
 
-require("which-key").register({
-    m = {
-        w = { '<cmd>HopWord<cr>', '[M]ove to [W]ord' },
-        s = { '<cmd>HopLineStart<cr>', '[M]ove to Line [S]tart' },
-        l = { '<cmd>HopLine<cr>', '[M]ove to [L]ine' },
-        c = { '<cmd>HopChar2<cr>', '[M]ove to [C]hars' },
-        a = { '<cmd>HopAnywhere<cr>', '[M]ove to [A]nywhere' },
-    },
-    s = {
-        s = { '<cmd>split<cr><C-w>w', '[S]plit', { silent = true } },
-        v = { '<cmd>vsplit<cr><C-w>w', '[S]plit [V]ertical', { silent = true } },
-        h = { '<C-w>h' },
-        j = { '<C-w>j' },
-        k = { '<C-w>k' },
-        l = { 'C-w>l' },
-    },
-    t = {
-        e = { '<cmd>tabedit<cr>', '[T]ab [E]dit', { silent = true } },
-        d = { '<cmd>tabclose<cr>', '[T]ab [D]elete', { silent = true } },
-        l = { '<cmd>BufferLineCycleNext<cr>', 'Go Prev [T]ab' },
-        h = { '<cmd>BufferLineCyclePrev<cr>', 'Go Next [T]ab' },
-    },
-    U = { '<C-r>', 'Reset' },
-    ['['] = {
-        d = { '<cmd>Lspsaga diagnostic_jump_next<cr>', 'Jump Next [D]iagnostics' }
-    },
-    [']'] = {
-        d = { '<cmd>Lspsaga diagnostic_jump_prev<cr>', 'Jump Prev [D]iagnostics' }
-    },
-    ['<C-l>'] = { '<C-w><' },
-    ['<C-h>'] = { '<C-w>>' },
-    ['<C-j>'] = { '<C-w>+' },
-    ['<C-k>'] = { '<C-w>-' },
-    ['<C-[>'] = { '<cmd>noh<cr>', 'No Highlight' }
-}, {})
+require("which-key").add({
+    { "m",     group = "Move" },
+    { "mw",    '<cmd>HopWord<cr>',                      desc = "[M]ove to [W]ord" },
+    { "ms",    '<cmd>HopLineStart<cr>',                 desc = "[M]ove to Line [S]tart" },
+    { "ml",    '<cmd>HopLine<cr>',                      desc = "[M]ove to [L]ine" },
+    { "mc",    '<cmd>HopChar2<cr>',                     desc = "[M]ove to [C]hars" },
+    { "ma",    '<cmd>HopAnywhere<cr>',                  desc = "[M]ove to [A]nywhere" },
+
+    { "s",     group = "Window" },
+    { "ss",    '<cmd>split<cr><C-w>w',                  desc = "[S]plit",                silent = true },
+    { "sv",    '<cmd>vsplit<cr><C-w>w',                 desc = "[S]plit [V]ertical",     silent = true },
+    { "sh",    '<C-w>h' },
+    { "sj",    '<C-w>j' },
+    { "sk",    '<C-w>k' },
+    { "sl",    '<C-w>l' },
+
+    { "t",     group = "Tab" },
+    { "te",    '<cmd>tabedit<cr>',                      desc = "[T]ab [E]dit",           silent = true },
+    { "td",    '<cmd>tabclose<cr>',                     desc = "[T]ab [D]elete",         silent = true },
+    { "tl",    '<cmd>BufferLineCycleNext<cr>',          desc = "Go Prev [T]ab" },
+    { "th",    '<cmd>BufferLineCyclePrev<cr>',          desc = "Go Next [T]ab" },
+
+    { "U",     '<C-r>',                                 desc = "Reset" },
+    { "[d",    '<cmd>Lspsaga diagnostic_jump_next<cr>', desc = "Jump Next [D]iagnostics" },
+    { "]d",    '<cmd>Lspsaga diagnostic_jump_prev<cr>', desc = "Jump Prev [D]iagnostics" },
+    { '<C-l>', '<C-w><' },
+    { '<C-h>', '<C-w>>' },
+    { '<C-j>', '<C-w>+' },
+    { '<C-k>', '<C-w>-' },
+    { '<C-[>', '<cmd>noh<cr>',                          desc = "No Highlight" },
+})
 
 vim.keymap.set({ 'n', 'v' }, 'J', '<C-d>')
 vim.keymap.set({ 'n', 'v' }, 'K', '<C-u>')
