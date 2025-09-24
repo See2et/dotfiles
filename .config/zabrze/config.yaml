@@ -21,3 +21,6 @@ abbrevs:
   - name: zellij
     abbr: ze
     snippet: zellij --layout 1p2p
+  - name: dot
+    abbr: d
+    snippet: dot
