@@ -1,5 +1,5 @@
 [user]
-	email = me.see2et@gmail.com
+	email = 61668366+See2et@users.noreply.github.com.
 	name = See2et / しーぜっと
 [init]
 	defaultBranch = main
@@ -7,3 +7,9 @@
 	root=~/repos
 [core]
 	editor = nvim
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
