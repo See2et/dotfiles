@@ -1,0 +1,6 @@
+.codex/archived-sessions
+.codex/log
+.codex/sessions
+.codex/auth.json
+.codex/history.jsonl
+.codex/version.json
