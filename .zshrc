@@ -52,6 +52,7 @@ export OPENSSL_DIR=/usr/lib/ssl
 export OPENAI_API_KEY=0000 # dummy
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
 # typst
 export TYPST_FONT_PATHS=~/.fonts/
