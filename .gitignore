@@ -1,3 +1,11 @@
+# neovim
+~/.config/nvim/.cache/
+~/.config/nvim/.nvimlog
+~/.config/nvim/.data/
+~/.config/nvim/.state/
+~/.config/nvim/.treesitter/
+
+# codex
 .codex/archived_sessions
 .codex/log
 .codex/sessions
