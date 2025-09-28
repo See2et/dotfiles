@@ -65,7 +65,6 @@ return {
             rust_analyzer = {},
             taplo = {},
             tinymist = {},
-            typst_lsp = {},
         }
 
         mason.setup()
