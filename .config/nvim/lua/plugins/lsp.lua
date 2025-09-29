@@ -71,24 +71,8 @@ return {
 
         mason.setup()
         mason_lspconfig.setup({
+            automatic_enable = true,
             ensure_installed = vim.tbl_keys(servers)
-        })
-        mason_lspconfig.setup_handlers({
-            function(server)
-                local opt = {}
-
-                if server == "tsserver" then
-                    if not exist_file(lspconfig.util.root_pattern("package.json")) then return end
-                end
-                if server == "lua_ls" then
-                    require("neodev").setup()
-                end
-
-                opt = servers[server]
-                opt.capabilities = capabilities
-                opt.on_attach = on_attach
-                lspconfig[server].setup(opt)
-            end,
         })
     end,
     dependencies = {
