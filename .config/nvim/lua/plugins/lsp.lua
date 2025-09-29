@@ -123,8 +123,15 @@ return {
             }
         },
         {
-            "folke/neodev.nvim",
-            ft = "lua"
+            {
+                "folke/lazydev.nvim",
+                ft = "lua",
+                opts = {
+                    library = {
+                        "lazy.nvim"
+                    },
+                },
+            },
         },
         {
             "hrsh7th/nvim-cmp",
