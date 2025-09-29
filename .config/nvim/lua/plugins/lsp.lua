@@ -76,7 +76,7 @@ return {
         mason.setup()
         mason_lspconfig.setup({
             automatic_enable = true,
-            ensure_installed = vim.tbl_keys(servers)
+            ensure_installed = servers
         })
 
         vim.lsp.enable(servers)
