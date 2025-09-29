@@ -4,7 +4,6 @@ return {
         local mason = require("mason")
         local lspconfig = require("lspconfig")
         local mason_lspconfig = require("mason-lspconfig")
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
         local on_attach = function(_, bufnr)
             vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
                 vim.lsp.buf.format()
@@ -15,6 +14,9 @@ return {
             return directory(vim.api.nvim_buf_get_name(0)) ~= nil
         end
 
+        vim.lsp.config('*', {
+            capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        })
 
         local servers = {
             lua_ls = {
