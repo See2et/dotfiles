@@ -17,56 +17,60 @@ return {
         vim.lsp.config('*', {
             capabilities = require('cmp_nvim_lsp').default_capabilities(),
         })
-
-        local servers = {
-            lua_ls = {
-                settings = {
-                    Lua = {
-                        workspace = { checkThirdParty = false },
-                        telemetry = { enable = false },
-                    },
+        vim.lsp.config("lua_ls", {
+            settings = {
+                Lua = {
+                    workspace = { checkThirdParty = false },
+                    telemetry = { enable = false },
                 },
             },
-            ts_ls = {
-                root_dir = lspconfig.util.root_pattern("package.json"),
-            },
-            denols = {
-                single_file_support = function()
-                    if not exist_file("deno.json") and not exist_file("deno.jsonc") then
-                        return true
-                    else
-                        return false
-                    end
-                end,
-                root_dir = function()
-                    if exist_file("deno.json") then
-                        return lspconfig.util.root_pattern("deno.json")
-                    elseif exist_file("deno.jsonc") then
-                        return lspconfig.util.root_pattern("deno.jsonc")
-                    else
-                        return lspconfig.util.root_pattern(nil)
-                    end
-                end,
-                settings = {
-                    deno = {
-                        lint = true,
-                        unstable = true,
-                        suggest = {
-                            imports = {
-                                hosts = {
-                                    ["https://deno.land"] = true,
-                                    ["https://cdn.nest.land"] = true,
-                                    ["https://crux.land"] = true,
-                                }
+        })
+        vim.lsp.config("ts_ls", {
+            root_dir = lspconfig.util.root_pattern("package.json"),
+        })
+        vim.lsp.config("denols", {
+            single_file_support = function()
+                if not exist_file("deno.json") and not exist_file("deno.jsonc") then
+                    return true
+                else
+                    return false
+                end
+            end,
+            root_dir = function()
+                if exist_file("deno.json") then
+                    return lspconfig.util.root_pattern("deno.json")
+                elseif exist_file("deno.jsonc") then
+                    return lspconfig.util.root_pattern("deno.jsonc")
+                else
+                    return lspconfig.util.root_pattern(nil)
+                end
+            end,
+            settings = {
+                deno = {
+                    lint = true,
+                    unstable = true,
+                    suggest = {
+                        imports = {
+                            hosts = {
+                                ["https://deno.land"] = true,
+                                ["https://cdn.nest.land"] = true,
+                                ["https://crux.land"] = true,
                             }
                         }
                     }
                 }
-            },
-            omnisharp = {},
-            rust_analyzer = {},
-            taplo = {},
-            tinymist = {},
+            }
+        })
+
+
+        local servers = {
+            "lua_ls",
+            "ts_ls",
+            "denols",
+            "omnisharp",
+            "rust_analyzer",
+            "taplo",
+            "tinymist"
         }
 
         mason.setup()
@@ -74,6 +78,8 @@ return {
             automatic_enable = true,
             ensure_installed = vim.tbl_keys(servers)
         })
+
+        vim.lsp.enable(servers)
     end,
     dependencies = {
         { "williamboman/mason.nvim" },
