@@ -1,3 +1,5 @@
+[home-managerへの移行を進めています](https://github.com/See2et/nix-home-manager)。
+
 ## Setup
 ```bash
 cd $HOME
